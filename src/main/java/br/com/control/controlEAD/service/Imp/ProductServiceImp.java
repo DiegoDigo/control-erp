@@ -23,7 +23,12 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public Flux<Product> getAll() {
+    public Flux<Product> getAllProduct() {
         return this.productRepository.findAll();
+    }
+
+    @Override
+    public Mono<Product> getProductId(String id) {
+        return this.productRepository.findById(id);
     }
 }

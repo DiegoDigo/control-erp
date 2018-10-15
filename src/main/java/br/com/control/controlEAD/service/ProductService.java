@@ -8,6 +8,8 @@ public interface ProductService {
 
     Mono<Product> saveProduct(Product product);
 
-    Flux<Product> getAll();
+    Flux<Product> getAllProduct();
+
+    Mono<Product> getProductId(String id);
 
 }
