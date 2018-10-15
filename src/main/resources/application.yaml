@@ -4,4 +4,6 @@ server:
 spring:
   data:
     mongodb:
+      host: ${SPRING_DATA_MONGODB_HOST:localhost}
+      port: ${SPRING_DATA_MONGODB_PORT:27017}
       database: control-ead
