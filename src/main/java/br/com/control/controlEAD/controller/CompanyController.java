@@ -20,14 +20,16 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
+
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')" )
     public Flux<Company> getAll(){
         return companyService.getAllCompany();
 
     }
 
-    @PreAuthorize("hasRole('ADMIN') or hasRole('REVENDA')" )
     @GetMapping("{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('REVENDA')" )
     public Mono<ResponseEntity<Company>> get(@PathVariable("id") String id){
         return companyService.getCompanyById(id)
                 .map(ResponseEntity::ok)
@@ -45,6 +47,7 @@ public class CompanyController {
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ADMIN') or hasRole('REVENDA')" )
     public Mono<ResponseEntity<Company>> update(@RequestBody Company company){
         return companyService.saveCompany(company)
                 .map(ResponseEntity::ok)
@@ -53,6 +56,7 @@ public class CompanyController {
     }
 
     @DeleteMapping("{id}")
+    @PreAuthorize("hasRole('ADMIN')" )
     public Mono<Void> delete(@PathVariable("id") String id){
         return companyService.deleteCompanyById(id);
 
