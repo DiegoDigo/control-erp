@@ -7,3 +7,14 @@ spring:
       host: ${SPRING_DATA_MONGODB_HOST:localhost}
       port: ${SPRING_DATA_MONGODB_PORT:27017}
       database: control-ead
+
+
+springbootwebfluxjjwt:
+  password:
+    encoder:
+      secret: z[4L{PXU4Hk8%$eN
+      iteration: 33
+      keylength: 256
+  jjwt:
+    secret: z[4L{PXU4Hk8%$eN
+    expiration: 28800
